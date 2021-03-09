@@ -9,6 +9,7 @@ es (24 sloc)  695 Bytes
 # Ignore bundler config.
 /.bundle
 /vendor/*
+/frontend/node_modules
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
