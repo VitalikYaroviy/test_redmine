@@ -1,9 +1,7 @@
 class Api::V1::JobsController < ApplicationController
 
   def index
-    jobs = current_user.job.where(
-      created_at: Time.parse(params[:date]).beginning_of_day..Time.parse(params[:date]).end_of_day
-    )
+    jobs = current_user.job.with_date_period(params[:date])
     render json: { job: jobs }, status: 201
   end
 
