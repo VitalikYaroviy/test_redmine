@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
-// import { toastr } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr'
 
 import * as actions from './actions'
 
@@ -7,8 +7,10 @@ function* createSession(api, { data }, { resource, thunk }) {
   try {
     const detail = yield call([api, api.post], `/${resource}`,  data)
     yield put(actions.sessionCreateSuccess(resource, detail, { data }, thunk))
+    toastr.success('Success', 'You are successfully login!')
   } catch (e) {
     yield put(actions.sessionCreateFailure(resource, e, { data }, thunk))
+    toastr.error('Oops!', 'Something went wrong...')
   }
 }
 
@@ -25,10 +27,10 @@ function* deleteSession(api, { resource, thunk }) {
   try {
     const detail = yield call([api, api.delete], `/${resource}`)
     yield put(actions.sessionDeleteSuccess(resource, detail, thunk))
-    // toastr.success('Success', 'You successfully loggout!')
+    toastr.success('Success', 'You successfully logout!')
   } catch (e) {
     yield put(actions.sessionDeleteFailure(resource, e, thunk))
-    // toastr.error('Oops! Something went wrong...')
+    toastr.error('Oops! Something went wrong...')
   }
 }
 

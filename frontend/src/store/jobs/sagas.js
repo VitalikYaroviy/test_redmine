@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
-// import { toastr } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr'
 
 import * as actions from './actions'
 
@@ -25,8 +25,10 @@ function* createJob(api, { data }, { resource, thunk }) {
   try {
     const detail = yield call([api, api.post], `/${resource}`,  data)
     yield put(actions.jobCreateSuccess(resource, detail, { data }, thunk))
+    toastr.success('Success!', 'Created new job!')
   } catch (e) {
     yield put(actions.jobCreateFailure(resource, e, { data }, thunk))
+    toastr.error('Oops! Something went wrong...')
   }
 }
 
@@ -34,10 +36,10 @@ function* deleteJob(api, { resource, thunk }) {
   try {
     const detail = yield call([api, api.delete], `/${resource}`)
     yield put(actions.jobDeleteSuccess(resource, detail, thunk))
-    // toastr.success('Success', 'You successfully loggout!')
+    toastr.success('Success!', 'Job deleted!')
   } catch (e) {
     yield put(actions.jobDeleteFailure(resource, e, thunk))
-    // toastr.error('Oops! Something went wrong...')
+    toastr.error('Oops! Something went wrong...')
   }
 }
 
@@ -55,10 +57,10 @@ function* updateJob(api, { data }, { resource, thunk }) {
     const detail = yield call([api, api.put], `/${resource}`,  data)
     yield put(actions.jobUpdateSuccess(resource, detail, { data }, thunk))
     // yield put(actions.resourceGetRequest(`/clients?page=${currentPage}`, detail, thunk))
-    // toastr.success('Success', 'Updated!')
+    toastr.success('Success', 'Updated!')
   } catch (e) {
     yield put(actions.jobUpdateFailure(resource, e, { data }, thunk))
-    // toastr.error('Oops! Something went wrong...')
+    toastr.error('Oops! Something went wrong...')
   }
 }
 
