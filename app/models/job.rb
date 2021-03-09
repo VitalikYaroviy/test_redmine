@@ -7,6 +7,6 @@ class Job < ApplicationRecord
     created_at: Time.parse(date).beginning_of_day..Time.parse(date).end_of_day
   )}
 
-  enum name: [:colafizz, :twiine, :rest]
-  enum category: [:development, :investigation, :meeting, :ps4]
+  enum name: [:colafizz, :twiine, :froth, :qwki]
+  enum category: [:development, :investigation, :meeting, :ps4, :bloked, :devops, :education]
 end

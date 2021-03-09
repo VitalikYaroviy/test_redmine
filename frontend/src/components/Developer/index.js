@@ -8,19 +8,22 @@ import { Modal } from 'react-responsive-modal'
 import { isEmpty } from 'lodash'
 
 import './styles.scss'
-import { ArrowBackIcon, CalendarIcon, CencelIcon, NextArrowIcon } from '../assets/svg';
+import { ArrowBackIcon, CalendarIcon, CencelIcon, NextArrowIcon } from '../assets/svg'
 
 const projects = [
   { value: 'colafizz', label: 'Colafizz' },
-  { value: 'rest', label: 'Rest' },
+  { value: 'froth', label: 'Froth' },
   { value: 'twiine', label: 'Twine' },
+  { value: 'qwki', label: 'Qwki' },
 ];
 
 const categories = [
   { value: 'development', label: 'Development' },
   { value: 'investigation', label: 'Investigation' },
-  { value: 'meeting', label: 'StandUp Meeting' },
-  { value: 'ps4', label: 'PS4' },
+  { value: 'meeting', label: 'Meeting' },
+  { value: 'bloked', label: 'Bloked' },
+  { value: 'devops', label: 'Devops' },
+  { value: 'education', label: 'Education' }
 ];
 
 export const Developer = ({
@@ -59,8 +62,8 @@ export const Developer = ({
       <div onClick={ onClick } ref={ ref } className='custom-input'>
         <CalendarIcon/>
       </div>
-    ),
-  );
+    )
+  )
 
   return (
     <div>
